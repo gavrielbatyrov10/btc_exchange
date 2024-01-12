@@ -171,10 +171,8 @@ nav {
 
 .header__img {
   display: inline-block;
-  /* Ensure the image rotates around its center */
   animation: spin 14s linear infinite;
   width: 150px;
-  /* Set the width of your image */
   height: auto;
   border-radius: 50%;
 }
@@ -263,9 +261,9 @@ nav {
 
 .div1 {
   display: flex;
-justify-content: center;
-align-items: flex-end;
-width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
 }
 
 
@@ -285,7 +283,7 @@ width: 100%;
   margin-bottom: 8px;
   border-bottom: 4px solid rgb(13, 138, 67);
   padding: 14px 0;
-  margin-right: 4px; 
+  margin-right: 4px;
   border-top: 4px solid rgb(13, 138, 67);
   filter: invert(1);
   box-shadow: 0 0 34px #0b8c1e;
@@ -295,7 +293,7 @@ width: 100%;
 
 .buying__wrapper {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
 }
 
