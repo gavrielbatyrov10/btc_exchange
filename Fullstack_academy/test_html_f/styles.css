@@ -1,0 +1,56 @@
+body {
+    font-family: sans-serif;
+}
+
+.ui.header {
+    text-align: center;
+    padding: 20px;
+}
+
+.ui.button {
+    margin: 10px;
+}
+
+.hero {
+    background-image: url("path/to/hero-background.jpg");
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    color: white;
+    text-align: center;
+}
+
+
+
+value-prop {
+    @include ui grid;
+}
+
+.value-prop>.row {
+    @include ui equal width row;
+}
+
+.value-prop>.row>.column {
+    padding: 20px;
+}
+
+.cta {
+    @include ui grid;
+    text-align: center;
+}
+
+.cta>.row>.column {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
