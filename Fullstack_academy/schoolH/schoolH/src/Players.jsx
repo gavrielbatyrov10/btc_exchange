@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import {
-  getSinglePlayer,
-  getAllPlayers,
-  deletePlayer,
-  addPlayer,
-} from "./features/playersSlice";
-import { fetchAllPlayers } from "./features/playersSlice";
+import { fetchAllPlayers } from "./features/playersSlice"; // Import fetchAllPlayers
 
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
@@ -36,16 +30,17 @@ export default function Players() {
       ) : (
         <>
           {/*player list all of them */}
-          {data.map((player, index) => {
-            return (
-              <Card
-                player={player}
-                setDetails={setDetails}
-                fetchAllPlayers={fetchAllPlayers}
-                key={`player${index}`}
-              />
-            );
-          })}
+          {Array.isArray(data) &&
+            data.map((player, index) => {
+              return (
+                <Card
+                  player={player}
+                  setDetails={setDetails}
+                  fetchAllPlayers={fetchAllPlayers}
+                  key={`player${index}`}
+                />
+              );
+            })}
         </>
       )}
     </div>

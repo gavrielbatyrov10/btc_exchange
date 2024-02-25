@@ -1,5 +1,4 @@
-const cohortName = "2401-fsa-et-web-ft-sf-gavriel";
-const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
+import React from "react";
 
 export default function Card({ player, goBack, setDetails, fetchAllPlayers }) {
   console.log("card", player);

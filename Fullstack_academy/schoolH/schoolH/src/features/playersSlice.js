@@ -1,16 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 const cohortName = "2401-fsa-et-web-ft-sf-gavriel";
 const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
 
-const initialState = {
-  value: [],
-};
-
-//unique aciton because we are using Thunk, thunk is async/await
-//holds all the reducer
-
-export const fetchAllPlayers = createAsyncThunk( //2
-  API_URL + "/players",
+export const fetchAllPlayers = createAsyncThunk(
+  "players/fetchAllPlayers",
   async () => {
     const response = await fetch(API_URL + "/players");
     const result = await response.json();
@@ -19,43 +13,35 @@ export const fetchAllPlayers = createAsyncThunk( //2
   }
 );
 
-export const playersSlice = createSlice({
-  name: "players",
-  initialState,
-  reducers: {
-    getAllPlayers: async (state) => {
-      /*
-      const data = await fetchAllPlayers();
-      console.log("data:", data);
-      state.value = [...data];
-      */
-    },
-    getSinglePlayer: (state) => {
-      state.value -= 1;
-    },
-    deletePlayer: (state, action) => {
-      state.value += action.payload;
-    },
-    addPlayer: (state, action) => {
-      state.value += action.payload;
-    },
-  },
-  extraReducers: (builder) => {
-    /*
-    builder.addCase(fetchAllPlayers, (state, action) => {
-      return action.payload;
+export const addPlayer = createAsyncThunk(
+  "players/addPlayer",
+  async (playerData) => {
+    const response = await fetch(API_URL + "/players", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(playerData),
     });
-    */
-    //state is related to the store
-    //action coress data that comes back
+    const result = await response.json();
+    return result.data;
+  }
+);
+
+const playersSlice = createSlice({
+  name: "players",
+  initialState: {
+    value: [],
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(addPlayer.fulfilled, (state, action) => {
+      state.value.push(action.payload);
+    });
     builder.addCase(fetchAllPlayers.fulfilled, (state, action) => {
-      return action.payload.players; //3
+      state.value = action.payload;
     });
   },
 });
-
-// Action creators are generated for each case reducer function
-export const { getSinglePlayer, getAllPlayers, deletePlayer, addPlayer } =
-  playersSlice.actions;
 
 export default playersSlice.reducer;
