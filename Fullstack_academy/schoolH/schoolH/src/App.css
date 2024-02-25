@@ -1,0 +1,96 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 4rem;
+  margin: 0 auto;
+}
+
+#playerList {
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#playerList div:hover {
+  transition: all 400ms;
+  scale: 1.1;
+  scale: 0.9;
+}
+
+#playerList div {
+  background-color: rgb(229, 223, 229);
+  padding: 5px;
+  height: 15rem;
+  text-align: center;
+  width: calc(100% / 4);
+
+}
+
+.card {
+  border: solid 1px black;
+  padding: 5px;
+  border-radius: 15px;
+  margin: 0 auto;
+  background-color: rgb(229, 223, 229);
+  max-width: 12rem;
+  width: calc(100% / 4);
+
+
+}
+
+.card:hover {
+  scale: 0.9;
+  transition: all 400ms;
+}
+
+form {
+  max-width: 20rem;
+  margin: 0 auto;
+  align-items: center;
+  padding-top: 20px;
+}
+
+input[type=text] {
+  border-radius: 30px;
+  padding: 4px;
+  display: flex;
+  margin: 0 auto;
+  background-color: rgb(127, 153, 255);
+  color: white;
+}
+
+input[type=submit] {
+  border-radius: 30px;
+  padding: 4px;
+  display: flex;
+  margin: 0 auto;
+  cursor: pointer;
+  background-color: rgb(234, 177, 172);
+}
+
+
+
+form fieldset:nth-of-type(-n+2) {
+  background: rgb(139, 196, 249);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+form fieldset:nth-of-type(-n+3) {
+  background: rgb(139, 196, 249);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+button {
+  padding: 4px;
+  border-radius: 8px;
+  border: none;
+  background-color: black;
+  color: rgb(255, 6, 6);
+}
