@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 
 import store from "./store";
 import Players from "./Players";
+import AddPlayerForm from "./AddPlayerForm";
 
 function App() {
   //const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <Provider store={store}>
+      <AddPlayerForm />
       <Players />
     </Provider>
   );

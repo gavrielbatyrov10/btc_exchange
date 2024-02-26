@@ -1,7 +1,7 @@
-// Form component
+// AddPlayerForm.jsx
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addPlayer } from "./features/playersSlice";
+import { addPlayer } from "./playersSlice"; // Import the addPlayer action creator
 
 const AddPlayerForm = () => {
   const [name, setName] = useState("");

@@ -1,46 +1,33 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { fetchAllPlayers } from "./features/playersSlice"; // Import fetchAllPlayers
-
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllPlayers } from "./playersSlice";
 import Card from "./Card";
-export default function Players() {
-  const data = useSelector((store) => {
-    console.log("store", store);
-    if (store.players.value) {
-      return store.players.value;
-    }
-    return store.players;
-  }); //5
 
+export default function Players() {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.players.value);
   const [details, setDetails] = useState(null);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchAllPlayers()); //1
-  }, []);
-  console.log("check", data);
+    dispatch(fetchAllPlayers());
+  }, [dispatch]);
 
   return (
     <div id="playerList">
-      {/*one player */}
+      <AddPlayerForm />
       {details ? (
         <Card player={details} goBack setDetails={setDetails} />
       ) : (
         <>
-          {/*player list all of them */}
           {Array.isArray(data) &&
-            data.map((player, index) => {
-              return (
-                <Card
-                  player={player}
-                  setDetails={setDetails}
-                  fetchAllPlayers={fetchAllPlayers}
-                  key={`player${index}`}
-                />
-              );
-            })}
+            data.map((player, index) => (
+              <Card
+                player={player}
+                setDetails={setDetails}
+                fetchAllPlayers={fetchAllPlayers}
+                key={`player${index}`}
+              />
+            ))}
         </>
       )}
     </div>

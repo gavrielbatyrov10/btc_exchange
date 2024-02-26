@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./features/counterSlice";
-import playersReducer from "./features/playersSlice";
-
+import playersReducer from "./playersSlice"; // Corrected import path
+// const API_URL =
+//   "https://fsa-puppy-bowl.herokuapp.com/api/2401-fsa-et-web-ft-sf-/players";
 const store = configureStore({
   reducer: {
     counter: counterReducer,
