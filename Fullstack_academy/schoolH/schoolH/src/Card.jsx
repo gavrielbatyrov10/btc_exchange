@@ -1,31 +1,32 @@
 import React from "react";
+import { deletePlayer } from "./playersSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Card({ player, goBack, setDetails, fetchAllPlayers }) {
+export default function Card({
+  player,
+  goBack,
+  details,
+  setDetails,
+  fetchAllPlayers,
+}) {
   console.log("card", player);
-  const { id, name, imageUrl, alt } = player; //0, 1, 2, 3
+  const dispatch = useDispatch();
+  const { id, name, imageUrl, cohortId, alt } = player; //0, 1, 2, 3
   const detailsHandler = (player) => {
     setDetails(player);
   };
 
   const deleteHandler = async (playerId) => {
-    try {
-      const response = await fetch(API_URL + "/players/" + playerId, {
-        method: "DELETE",
-      });
-      const result = await response.json();
-      fetchAllPlayers();
-    } catch (err) {
-      console.error(
-        `Whoops, trouble removing player #${playerId} from the roster!`,
-        err
-      );
-    }
+    console.log("click");
+    dispatch(deletePlayer(playerId));
   };
 
   return (
     <div className={"card"}>
       <h4> {name}</h4>
       <img src={imageUrl} alt={alt} />
+      {details && <p>{cohortId}</p>}
+
       {goBack ? (
         <button onClick={() => setDetails(null)}>go back</button>
       ) : (
